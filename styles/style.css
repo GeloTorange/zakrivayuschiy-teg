@@ -140,6 +140,15 @@
   inset-block-start: clamp(23px, 1.2933rem + 0.6154vw, 25px);
 }
 
+@supports (text-stroke: 1px var(--background-color-main, oklch(100% 0 102.07))) or
+  (-webkit-text-stroke: 1px var(--background-color-main, oklch(100% 0 102.07))) {
+  .card__tag {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--background-color-main, oklch(100% 0 102.07));
+    text-stroke: 1px var(--background-color-main, oklch(100% 0 102.07));
+  }
+}
+
 .article-image {
   display: block;
   object-fit: cover;
