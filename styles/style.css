@@ -3,7 +3,7 @@
   font-variation-settings: 'wght' var(--font-w-text);
   background-color: var(--background-color-main);
   color: var(--accent-color);
-  background-image: var(--background-image);
+  background-image: var(--image-bg);
   background-attachment: fixed;
   background-repeat: repeat;
   background-size: 4px 4px;
@@ -106,6 +106,11 @@
   height: 14px;
 }
 
+.content__cards {
+  display: grid;
+  gap: 50px;
+}
+
 .card-title {
   font-variation-settings: 'wght' var(--font-w-title);
   line-height: normal;
@@ -116,6 +121,23 @@
 .card__images__wrapper {
   position: relative;
   border-block-start: 2px solid currentColor;
+}
+
+.card__tag {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.5;
+  font-family: var(--accent-font-family, sans-serif);
+  font-size: 14px;
+  text-shadow: -1px 0 var(--background-color-main, oklch(100% 0 102.07)),
+  1px 0 var(--background-color-main, oklch(100% 0 102.07)),
+  0 1px var(--background-color-main, oklch(100% 0 102.07)),
+  0 -1px var(--background-color-main, oklch(100% 0 102.07));
+  mix-blend-mode: light;
+
+  inset-inline-end: clamp(11px, -0.3221rem + 4.3077vw, 25px);
+
+  inset-block-start: clamp(23px, 1.2933rem + 0.6154vw, 25px);
 }
 
 .article-image {
@@ -218,8 +240,8 @@
 }
 
 .button__icon {
-  block-size: 22px;
-  inline-size: 22px;
+  z-index: 1;
+  flex-shrink: 0;
   color: var(--button-text-color);
   mix-blend-mode: difference;
 }
@@ -259,4 +281,81 @@
     inline-size: 100%;
     block-size: 100%;
   }
+}
+
+.card__image--brightness {
+  filter: brightness(200%);
+}
+
+.card__image--contrast {
+  filter: contrast(60%);
+}
+
+.card__image--opacity {
+  filter: opacity(0.7);
+}
+
+.card__image--grayscale {
+  filter: grayscale(0.7);
+}
+
+.card__image--saturate {
+  filter: saturate(150%);
+}
+
+.card__image--hue-rotate {
+  filter: hue-rotate(120deg);
+}
+
+.card__image--multi-filter {
+  filter: sepia(70%) invert(65%) contrast(60%);
+}
+
+.dialog[open] {
+  display: grid;
+  gap: 30px;
+  border: 2px solid var(--accent-color, oklch(0% 0 0));
+  padding-inline: 30px;
+  padding-block: 30px;
+  overflow: hidden;
+  background-color: var(--background-color-main, oklch(100% 0 102.07));
+  inline-size: 100%;
+  max-inline-size: 357px;
+}
+
+@media (width <= 375px) {
+  .dialog[open] {
+    padding-inline: 40px;
+    max-inline-size: 341px;
+  }
+}
+
+.dialog::backdrop {
+  opacity: 75%;
+  background-color: var(--color-backdrop, oklch(0% 0 0));
+}
+
+.dialog__message {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dialog__text {
+  color: var(--accent-color, oklch(0% 0 0));
+  font-family: var(--accent-font-family, sans-serif);
+  font-size: 14px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.dialog__floppy-icon {
+  block-size: 39px;
+}
+
+.dialog__button {
+  display: grid;
+  place-items: center;
+  block-size: 38px;
+  inline-size: 100%;
 }
